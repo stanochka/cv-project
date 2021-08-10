@@ -1,9 +1,9 @@
 import React from 'react';
 
 function Header() {
-  return (<div className="Header">
+  return (<header>
           <h1>CV Builder</h1>
-          </div>)
+          </header>)
 }
 
 export default Header;
