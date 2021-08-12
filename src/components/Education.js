@@ -6,7 +6,7 @@ function Education() {
     return (<div>new education</div>)
   }
 
-  return (<div>
+  return (<div className='Education'>
             <h2>Education</h2>
             <button id='newEducation' onClick={addEducation}>Add</button>
           </div>)

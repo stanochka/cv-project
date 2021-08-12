@@ -11,7 +11,7 @@ class General extends React.Component {
     }
   }
   render() {
-    return (<div>
+    return (<div className='General'>
               <label htmlFor='givenName'>Name</label><br />
               <input
                   id='givenName'

@@ -3,12 +3,18 @@ import General from './General';
 import Education from './Education';
 import Work from './Work';
 
-function Main() {
-  return (<div className="Main">
-            <General />
-            <Education />
-            <Work />
-          </div>)
+class Main extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+  render() {
+    return (<form className="Main">
+              <General />
+              <Education />
+              <Work />
+              <button type='submit'>Save</button>
+            </form>)
+  }
 }
 
 export default Main;

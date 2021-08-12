@@ -8,7 +8,7 @@ function Work() {
             </form>)
   }
 
-  return (<div>
+  return (<div className='Work'>
             <h2>Work Experience</h2>
             <button id='newEducation' onClick={addWork}>Add</button>
           </div>)
