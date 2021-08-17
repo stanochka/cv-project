@@ -4,31 +4,30 @@ class Education extends React.Component {
   constructor(props) {
     super(props);
     this.state = {  educations: [],
-                    education: { id: '',
-                                 school: '',
-                                 startYear: '',
-                                 finishYear: '', },
+                    school: '',
+                    startYear: '',
+                    finishYear: '',
     }
+    this.handleChange = this.handleChange.bind(this);
     this.addEducation = this.addEducation.bind(this);
   }
 
   handleChange = (e) => {
-    this.setState({ education: {[e.target.name]: e.target.value, }})
+    this.setState({ [e.target.name]: e.target.value, });
   }
 
   addEducation = (e) => {
     e.preventDefault();
     const newEd = {
-      id: 1,
-      school: this.state.education.school,
-      startYear: this.state.education.startYear,
-      finishYear: this.state.education.finishYear,
+      school: this.state.school,
+      startYear: this.state.startYear,
+      finishYear: this.state.finishYear,
     };
     this.setState({ educations: [...this.state.educations, newEd],
-                    education: { school: '',
-                                 startYear: '',
-                                 finishYear: '', },
-                  })
+                    school: '',
+                    startYear: '',
+                    finishYear: '',
+                  });
   }
 
   render() {
@@ -39,8 +38,8 @@ class Education extends React.Component {
                 <label htmlFor='school'>School</label><br />
                 <input
                     name='school'
-                    type='textarea'
-                    value={this.state.education.school}
+                    type='text'
+                    value={this.state.school}
                     onChange={this.handleChange}
                 ></input><br />
                 <input
@@ -48,14 +47,14 @@ class Education extends React.Component {
                     type='number'
                     min='1900'
                     max='2021'
-                    value={this.state.education.startYear}
+                    value={this.state.startYear}
                     onChange={this.handleChange}
                 ></input> - <input
                                 name='finishYear'
                                 type='number'
                                 min='1900'
                                 max='2021'
-                                value={this.state.education.finishYear}
+                                value={this.state.finishYear}
                                 onChange={this.handleChange}
                             ></input><br />
 
@@ -73,8 +72,7 @@ function Overview(props) {
     <ul>
       {educations.map((education, i) => {
         return (<li key={i}>
-                  <p>{education.school}</p>
-                  <p>{education.startYear}-{education.finishYear}</p>
+                  <p>{education.school} {education.startYear}-{education.finishYear}</p>
                 </li>
                 );
       })}
