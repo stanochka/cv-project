@@ -11,39 +11,40 @@ class General extends React.Component {
     }
   }
 
-  handleChange = (e) => {
-    this.setState({ [e.target.name]: e.target.value }
+  handleChange = e => {
+    this.setState({ [e.target.name]: e.target.value, })
   }
+
   render() {
     return (<div className='General'>
               <label htmlFor='givenName'>Name</label><br />
               <input
                   name='givenName'
-                  type='textarea'
+                  type='text'
                   value={this.state.givenName}
                   onChange={this.handleChange}
-                  required></input><br />
+              ></input><br />
               <label htmlFor='surname'>Surname</label><br />
               <input
-                  id='surname'
-                  type='textarea'
+                  name='surname'
+                  type='text'
                   value={this.state.surname}
-                  onChange={(e) => this.setState({ surname: e.target.value })}
-                  required></input><br />
+                  onChange={this.handleChange}
+              ></input><br />
               <label htmlFor='phone'>Phone</label><br />
               <input
-                  id='phone'
-                  type='textarea'
+                  name='phone'
+                  type='text'
                   value={this.state.phone}
-                  onChange={(e) => this.setState({ phone: e.target.value })}
-                  ></input><br />
+                  onChange={this.handleChange}
+              ></input><br />
               <label htmlFor='email'>Email</label><br />
               <input
-                  id='email'
+                  name='email'
                   type='email'
                   value={this.state.email}
-                  onChange={(e) => this.setState({ email: e.target.value })}
-                  required></input><br />
+                  onChange={this.handleChange}
+              ></input><br />
             </div>)
   }
 }

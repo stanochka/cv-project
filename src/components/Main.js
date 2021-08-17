@@ -4,7 +4,6 @@ import Education from './Education';
 import Work from './Work';
 
 function Main() {
-  const resume = {};
   return (<div className="Main">
             <General />
             <Education />

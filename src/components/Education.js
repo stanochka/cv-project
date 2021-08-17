@@ -4,17 +4,27 @@ class Education extends React.Component {
   constructor(props) {
     super(props);
     this.state = {  educations: [],
-                    education: { school: '',
-                                 location: '',
+                    education: { id: '',
+                                 school: '',
                                  startYear: '',
                                  finishYear: '', },
     }
     this.addEducation = this.addEducation.bind(this);
   }
 
-  addEducation(event) {
-    event.preventDefault();
-    this.setState({ educations: this.state.educations.concat(this.state.education),
+  handleChange = (e) => {
+    this.setState({ education: {[e.target.name]: e.target.value, }})
+  }
+
+  addEducation = (e) => {
+    e.preventDefault();
+    const newEd = {
+      id: 1,
+      school: this.state.education.school,
+      startYear: this.state.education.startYear,
+      finishYear: this.state.education.finishYear,
+    };
+    this.setState({ educations: [...this.state.educations, newEd],
                     education: { school: '',
                                  startYear: '',
                                  finishYear: '', },
@@ -28,25 +38,25 @@ class Education extends React.Component {
               <form id='EducationForm'>
                 <label htmlFor='school'>School</label><br />
                 <input
-                    id='school'
+                    name='school'
                     type='textarea'
                     value={this.state.education.school}
-                    onChange={(e) => this.setState({ education: { school: e.target.value }})}
+                    onChange={this.handleChange}
                 ></input><br />
                 <input
-                    id='startYear'
+                    name='startYear'
                     type='number'
                     min='1900'
                     max='2021'
                     value={this.state.education.startYear}
-                    onChange={(e) => this.setState({ education: { startYear: e.target.value }})}
+                    onChange={this.handleChange}
                 ></input> - <input
-                                id='finishYear'
+                                name='finishYear'
                                 type='number'
                                 min='1900'
                                 max='2021'
                                 value={this.state.education.finishYear}
-                                onChange={(e) => this.setState({ education: { finishYear: e.target.value }})}
+                                onChange={this.handleChange}
                             ></input><br />
 
                 <button id='addEducation' onClick={this.addEducation}>Add</button>
