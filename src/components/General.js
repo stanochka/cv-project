@@ -10,14 +10,18 @@ class General extends React.Component {
       email: '',
     }
   }
+
+  handleChange = (e) => {
+    this.setState({ [e.target.name]: e.target.value }
+  }
   render() {
     return (<div className='General'>
               <label htmlFor='givenName'>Name</label><br />
               <input
-                  id='givenName'
+                  name='givenName'
                   type='textarea'
                   value={this.state.givenName}
-                  onChange={(e) => this.setState({ givenName: e.target.value })}
+                  onChange={this.handleChange}
                   required></input><br />
               <label htmlFor='surname'>Surname</label><br />
               <input
