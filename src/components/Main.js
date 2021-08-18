@@ -12,6 +12,7 @@ class Main extends React.Component {
       surname: '',
       phone: '',
       email: '',
+      dataFromEducation: null,
     }
     this.handleChange = this.handleChange.bind(this);
     this.viewCV = this.viewCV.bind(this);
@@ -21,8 +22,12 @@ class Main extends React.Component {
     this.setState({ [e.target.name]: e.target.value, })
   }
 
-  viewCV(e) {
-    console.log(e.target);
+  getEducations = (data) => {
+    this.setState({dataFromEducation: data})
+  }
+
+  viewCV() {
+    console.log(this.state.dataFromEducation);
   }
   render() {
     return (<div className="Main">
@@ -32,11 +37,14 @@ class Main extends React.Component {
                          phone={this.state.phone}
                          email={this.state.email}
                          handleChange={this.handleChange}/>
-                <Education />
+                <Education callbackFromParent={this.getEducations} />
                 <Work />
-                <button onClick={this.viewCV}>Render CV</button>
+                <button onClick={this.getEducations}>Render CV</button>
               </div>
-              <Viewer />
+              <Viewer givenName={this.state.givenName}
+                      surname={this.state.surname}
+                      phone={this.state.phone}
+                      email={this.state.email}/>
             </div>)
   }
 

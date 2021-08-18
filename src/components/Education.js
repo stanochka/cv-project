@@ -31,6 +31,7 @@ class Education extends React.Component {
                     startYear: '',
                     finishYear: '',
                   });
+    this.props.callbackFromParent(this.state.educations);
   }
 
   render() {
