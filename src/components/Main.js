@@ -14,12 +14,11 @@ class Main extends React.Component {
       email: '',
       dataFromEducation: null,
     }
-    this.handleChange = this.handleChange.bind(this);
     this.viewCV = this.viewCV.bind(this);
   }
 
-  handleChange(e) {
-    this.setState({ [e.target.name]: e.target.value, })
+  handleChange = (value, name) => {
+    this.setState({ [name] : value });
   }
 
   getEducations = (data) => {
@@ -27,7 +26,7 @@ class Main extends React.Component {
   }
 
   viewCV() {
-    console.log(this.state.dataFromEducation);
+    console.log('SAVE');
   }
   render() {
     return (<div className="Main">
