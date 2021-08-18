@@ -1,9 +1,11 @@
 import React from 'react';
+import { v4 as uuidv4 } from 'uuid';
 
 class Education extends React.Component {
   constructor(props) {
     super(props);
     this.state = {  educations: [],
+                    id: '',
                     school: '',
                     startYear: '',
                     finishYear: '',
@@ -19,6 +21,7 @@ class Education extends React.Component {
   addEducation = (e) => {
     e.preventDefault();
     const newEd = {
+      id: uuidv4(),
       school: this.state.school,
       startYear: this.state.startYear,
       finishYear: this.state.finishYear,
@@ -42,6 +45,7 @@ class Education extends React.Component {
                     value={this.state.school}
                     onChange={this.handleChange}
                 ></input><br />
+                <label htmlFor='startYear'>Start Year</label> - <label htmlFor='finishYear'>Finish Year</label><br />
                 <input
                     name='startYear'
                     type='number'
@@ -70,8 +74,8 @@ function Overview(props) {
   const  { educations } = props;
   return (
     <ul>
-      {educations.map((education, i) => {
-        return (<li key={i}>
+      {educations.map(education => {
+        return (<li key={education.id}>
                   <p>{education.school} {education.startYear}-{education.finishYear}</p>
                 </li>
                 );
