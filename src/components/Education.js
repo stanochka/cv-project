@@ -17,16 +17,16 @@ class Education extends React.Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    this.setState({educations: this.state.educations.concat(
-                               {id: uuidv4(),
-                                school: this.state.school,
-                                startYear: this.state.startYear,
-                                finishYear: this.state.finishYear,})
-                  });
+    const newEd = {id: uuidv4(),
+                   school: this.state.school,
+                   startYear: this.state.startYear,
+                   finishYear: this.state.finishYear  || 'present'}
+    this.setState({educations: [...this.state.educations, newEd] });
     this.setState({school: '',
                   startYear: '',
                   finishYear: '',
                   editing: false,});
+    this.props.parentCallback([...this.state.educations, newEd]);
   }
 
   handleEdit = key => {

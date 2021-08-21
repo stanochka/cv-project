@@ -23,7 +23,7 @@ class Work extends React.Component {
       workplace: this.state.workplace,
       position: this.state.position,
       startYear: this.state.startYear,
-      finishYear: this.state.finishYear,
+      finishYear: this.state.finishYear || 'present',
     };
     this.setState({ works: [...this.state.works, newWork],
                     workplace: '',
@@ -32,6 +32,7 @@ class Work extends React.Component {
                     finishYear: '',
                     editing: false,
                   });
+    this.props.parentCallback([...this.state.works, newWork]);
   }
 
   handleEdit = key => {
