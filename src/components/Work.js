@@ -54,7 +54,7 @@ class Work extends React.Component {
     return (
       <div className='Work'>
         <h2>Work Experience</h2>
-        <ul> {this.state.works.map(w => {
+        <ul style={{textAlign: 'left'}}> {this.state.works.map(w => {
               return (<li key={w.id} onDoubleClick={() => this.handleEdit(w.id)}>
                         <div>{w.workplace}</div>
                         <div>{w.position}</div>
