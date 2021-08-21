@@ -30,13 +30,44 @@ class Main extends React.Component {
   }
 
   generatePDF = () => {
-    const data = `${this.state.name}
-                  ${this.state.profession}
-                  ${this.state.phone}
-                  ${this.state.email}`
     const doc = new jsPDF();
-    doc.text(data, 10, 10);
-    doc.save(`CV_${this.state.name.replace(/\s/g, '_')}.pdf`);
+    doc.setFontSize(22);
+    doc.text(this.state.name, 105, 10, 'center');
+    doc.setFontSize(12);
+    doc.text(this.state.profession, 105, 20, 'center');
+    doc.text(this.state.phone, 20, 30);
+    doc.text(this.state.email, 20, 40);
+
+    let y = 50;
+    doc.setLineWidth(0.5);
+    doc.line(75, y, 135, y);
+    y+=10;
+
+    if (this.state.works) {
+      doc.setFontSize(18);
+      doc.text('Work Experience', 105, y, 'center');
+      y+=20;
+      doc.setFontSize(12);
+      this.state.works.forEach((w, i) => {
+        doc.text(`${w.workplace}, ${w.position}\n${w.startYear}-${w.finishYear}`, 20, y+(i*20))
+      })
+      y += this.state.works.length*20;
+      doc.setLineWidth(0.5);
+      doc.line(75, y, 135, y);
+      y+=10;
+    }
+
+    if (this.state.educations) {
+      doc.setFontSize(18);
+      doc.text('Education', 105, y, 'center');
+      y+=10;
+      doc.setFontSize(12);
+      this.state.educations.forEach((ed, i) => {
+        doc.text(`${ed.school}\n${ed.startYear}-${ed.finishYear}`, 20, y+(i*20))
+      })
+    }
+
+    doc.save(`${this.state.name.replace(/\s/g, '_')}_CV.pdf`);
   }
 
   render() {

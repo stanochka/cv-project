@@ -46,7 +46,7 @@ class Education extends React.Component {
   render() {
     return (<div className='Education'>
               <h2>Education</h2>
-              <ul style={{textAlign: 'left'}> {this.state.educations.map(ed => {
+              <ul style={{textAlign: 'left'}}> {this.state.educations.map(ed => {
                     return (<li key={ed.id} onDoubleClick={() => this.handleEdit(ed.id)}>
                               <div>{ed.school}</div>
                               <div>{ed.startYear}-{ed.finishYear || 'present'}</div>
