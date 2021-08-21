@@ -20,7 +20,6 @@ class Main extends React.Component {
 
   render() {
     return (<div className="Main">
-              <p style={{textAlign: 'center'}}>Save on enter, edit on double click</p>
               <General name={this.state.name}
                        profession={this.state.profession}
                        phone={this.state.phone}

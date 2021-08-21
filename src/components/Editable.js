@@ -32,6 +32,9 @@ class Editable extends React.Component {
                  this.props.handleChange(e.target.value, this.props.name)
                }}
                onKeyDown={this.stopEdit} />
+        <button type='submit'
+                style={editMode}
+                onClick={() => this.setState({editing: false})}>Save</button>
       </div>
     )
   }

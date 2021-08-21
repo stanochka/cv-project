@@ -41,7 +41,8 @@ class Work extends React.Component {
                    workplace: toEdit.workplace,
                    position: toEdit.position,
                    startYear: toEdit.startYear,
-                   finishYear: toEdit.finishYear});
+                   finishYear: toEdit.finishYear,
+                   editing: true});
   }
 
   toggleEdit = () => {
